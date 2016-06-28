@@ -1,5 +1,7 @@
 package illmenu
 
+// Uses internal testing tools from go-json-rest
+
 import (
 	"testing"
 
@@ -34,22 +36,4 @@ func TestSimpleRequest(t *testing.T) {
 	recorded := test.RunRequest(t, s.Api.MakeHandler(), test.MakeSimpleRequest("GET", "http://1.2.3.4/query", nil))
 	recorded.CodeIs(200)
 	recorded.ContentTypeIsJson()
-
-	// api := rest.NewApi()
-	// api.Use(rest.DefaultDevStack...)
-
-	// router, err := rest.MakeRouter(
-	// 	rest.Get("/r", func(w rest.ResponseWriter, r *rest.Request) {
-	// 		w.WriteJson(map[string]string{"Id": "123"})
-	// 	}),
-	// )
-
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// api.SetApp(router)
-	// recorded := test.RunRequest(t, api.MakeHandler(), test.MakeSimpleRequest("GET", "http://1.2.3.4/r", nil))
-	// recorded.CodeIs(200)
-	// recorded.ContentTypeIsJson()
 }
