@@ -5,11 +5,19 @@ import (
 	"illmenu"
 )
 
-func main() {
+func images() {
 	links, e := illmenu.ImageSearch("dogs")
 	if e != nil {
 		panic(e.Error())
 	}
 
 	fmt.Println(links)
+}
+
+func server() {
+	illmenu.Serve()
+}
+
+func main() {
+	server()
 }

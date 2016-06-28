@@ -1,6 +1,7 @@
 package illmenu
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 
@@ -16,7 +17,7 @@ import (
 // Version 1 of the api
 type ServerApiV1 struct{}
 
-func StartServer() {
+func Serve() {
 	v1 := ServerApiV1{}
 
 	api := rest.NewApi()
@@ -28,10 +29,11 @@ func StartServer() {
 
 	panicOnError(err)
 	api.SetApp(router)
+	fmt.Println("Server started")
 	log.Fatal(http.ListenAndServe(":8080", api.MakeHandler()))
 }
 
 // Given a menu, search through the contents and find matching images
-func (s *ServerApiV1) Query() {
+func (s *ServerApiV1) Query(w rest.ResponseWriter, r *rest.Request) {
 	log.Printf("Query HTTP call")
 }
