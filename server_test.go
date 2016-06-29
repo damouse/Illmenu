@@ -31,7 +31,7 @@ func TestWork(t *testing.T) {
 }
 
 func TestSimpleRequest(t *testing.T) {
-	s := NewServer()
+	s := NewServer(nil)
 
 	recorded := test.RunRequest(t, s.Api.MakeHandler(), test.MakeSimpleRequest("GET", "http://1.2.3.4/query", nil))
 	recorded.CodeIs(200)

@@ -21,9 +21,10 @@ type APIServerOne struct {
 	Api *rest.Api
 }
 
-// I guess we can pass in database connection?
-func NewServer() *APIServerOne {
-	s := &APIServerOne{}
+// Create a new instance of the given server/handler wrapper
+// If a connection is passed in, it will be used as the database
+func NewServer(db *gorm.DB) *APIServerOne {
+	s := &APIServerOne{Db: db}
 
 	api := rest.NewApi()
 	api.Use(rest.DefaultDevStack...)
